@@ -3,10 +3,12 @@
     <title>M3U8 Creator</title>
   </head>
   <body>
+    <h1>M3U8 Creator</h1>
     <ul>
-      <li><a href="">Channels.m3u8</a></li>
-      <li><a href="#">xmltv.xml</a></li>
-      <li><a href="#">admin</a></li>
+      <li><a href="{% url 'core.views.playlist' %}">channels.m3u8</a> - Playlist file</li>
+      <li><a href="{% url 'core.views.xmltv' %}">xmltv.xml</a> - EPG feed</li>
+      <li><a href="{% url 'admin:index' %}">admin</a> - Management area</li>
     </ul>
+    <p>Visit the <a href="https://github.com/MarconiMediaGroup/M3U8-Creator/wiki" target="_blank">M3U8-Creator Wiki</a> for usage information.</p>
   </body>
 </html>

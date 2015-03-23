@@ -41,6 +41,6 @@ def playlist(request):
             # response = HttpResponse(content_type='application/x-mpegURL')
             # response['Content-Disposition'] = 'attachment; filename="channels.m3u8"'
 
-            response = HttpResponse(content_type='text/html; charset=utf-8')
-            response.content = "<html><body><pre>",items,"</pre></body></html>"
-            return response
+    response = HttpResponse(content_type='text/html; charset=utf-8')
+    response.content = "<html><body><pre>",items,"</pre></body></html>"
+    return response
