@@ -2,8 +2,22 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from core.models import *
 
-def playlist(request):
+def home(request):
+    response = HttpResponse(content_type='text/html; charset=utf-8')
+    response.content = "<html><body>IPTV Home</body></html>"
+    return response
 
+def logo(request, token):
+    response = HttpResponse(content_type='text/html; charset=utf-8')
+    response.content = "".join(["<html><body>Logo Image: ",token,".png</body></html>"])
+    return response
+
+def xmltv(request):
+    response = HttpResponse(content_type='text/html; charset=utf-8')
+    response.content = "<html><body>XMLTV Page</body></html>"
+    return response
+
+def playlist(request):
     items = u'#EXTM3U\n\n'
     active_channels = Channel.objects.all()
     for ac in active_channels:
