@@ -55,3 +55,4 @@ target/
 
 # Database -- use fixtures instead
 db.sqlite3
+files/static/*/

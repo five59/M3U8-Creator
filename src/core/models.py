@@ -90,12 +90,12 @@ class Channel(models.Model):
     )
     virtual_channel = models.IntegerField(
         verbose_name = u'Virtual Channel',
-        help_text = u'Channel Number Assignment',
+        help_text = u'Channel Number Assignment (Future Use. Ordering-only for now.)',
         default = 0,
     )
     chan_id = models.CharField(
         verbose_name = u'Channel ID',
-        help_text = u'The internal identifier for this channel',
+        help_text = u'The internal identifier for this channel.',
         unique = True,
         max_length = 64,
     )
@@ -122,7 +122,7 @@ class Channel(models.Model):
     )
     stream_uri = models.CharField(
         verbose_name = u'Stream URI',
-        help_text = u'Full URI, including protocol.',
+        help_text = u'Full URI, including protocol. Supports http(s), rtmp, mms, hdhomerun, etc. See the <a href="https://github.com/MarconiMediaGroup/M3U8-Creator/wiki" target="_blank">wiki</a> for details.',
         max_length = 256,
         default = u'',
         blank = True,

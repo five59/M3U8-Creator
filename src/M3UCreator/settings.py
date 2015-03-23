@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'suit',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -52,6 +53,7 @@ MIDDLEWARE_CLASSES = (
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.request',
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
@@ -104,3 +106,34 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR,'files','media')
 MEDIA_URL = '/media/'
+
+SUIT_CONFIG = {
+    # header
+    'ADMIN_NAME': 'M3U8 Creator',
+    'HEADER_DATE_FORMAT': 'l, j. F Y',
+    'HEADER_TIME_FORMAT': 'H:i',
+    'MENU_OPEN_FIRST_CHILD': True, # Default True
+    # 'MENU_EXCLUDE': ('auth.group',),
+    'MENU': (
+        {
+            'label': 'Channels',
+            'app': 'core',
+            'icon': 'icon-picture',
+            'models': ('channel', ),
+        },
+        {
+            'label': 'Support',
+            'app': 'core',
+            'icon': 'icon-tags',
+            'models': ('country','language','grouping','contenttype'),
+        },
+        {
+            'label': 'Authentication',
+            'app': 'auth',
+            'icon': 'icon-lock',
+            'models': ('user', 'group')
+        },
+    ),
+    # misc
+    'LIST_PER_PAGE': 25
+}
