@@ -1,5 +1,4 @@
-
-from django.shortcuts import render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.http import HttpResponse
 from core.models import *
 
@@ -8,9 +7,13 @@ def home(request):
     return render(request, 'core/home.html', context)
 
 def logo(request, token):
-    response = HttpResponse(content_type='text/html; charset=utf-8')
-    response.content = "".join(["<html><body>Logo Image: ",token,".png</body></html>"])
+    channel = get_object_or_404(Channel, chan_id=token)
+    if (channel.has_logo()):
+        response = redirect(channel.logo.url)
+    else:
+        response = HttpResponse(status=404)
     return response
+
 
 def xmltv(request):
     response = HttpResponse(content_type='text/html; charset=utf-8')

@@ -5,7 +5,7 @@ from django.db import models
 def logo_filename(instance, filename):
     ext = filename.split('.')[-1]
     token = datetime.datetime.utcnow().strftime('%Y%m%d%H%M%S%f')
-    filename = "%s.%s.%s" % (instance.xmltvid, token, ext)
+    filename = "%s.%s.%s" % (instance.chan_id, token, ext)
     return os.path.join('logo', 'channel', filename)
 
 
@@ -113,7 +113,7 @@ class Channel(models.Model):
         blank = True,
         max_length = 64,
     )
-    logo = models.FileField(
+    logo = models.ImageField(
         verbose_name = u'Logo',
         help_text = u'Image in PNG format. Should be square, at least 256x256.',
         upload_to = logo_filename,
