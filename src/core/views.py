@@ -6,15 +6,6 @@ def home(request):
     context = {}
     return render(request, 'core/home.html', context)
 
-def logo(request, token):
-    channel = get_object_or_404(Channel, chan_id=token)
-    if (channel.has_logo()):
-        response = redirect(channel.logo.url)
-    else:
-        response = HttpResponse(status=404)
-    return response
-
-
 def xmltv(request):
     response = HttpResponse(content_type='text/html; charset=utf-8')
     response.content = "<html><body>XMLTV Page</body></html>"
@@ -45,5 +36,6 @@ def playlist(request):
             # response['Content-Disposition'] = 'attachment; filename="channels.m3u8"'
 
     response = HttpResponse(content_type='text/html; charset=utf-8')
-    response.content = "<html><body><pre>",items,"</pre></body></html>"
+    response.content = items
+#    response.content = "<html><body><pre>",items,"</pre></body></html>"
     return response

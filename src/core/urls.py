@@ -6,8 +6,9 @@ from django.views.generic import RedirectView
 
 urlpatterns = patterns('core.views',
     url(r'^channels\.m3u8', 'playlist', name='playlist'),
-    url(r'^logo/(.+).png', 'logo', name='logo'),
     url(r'^logo/', RedirectView.as_view(url=reverse_lazy('core.views.home'))),
     url(r'^xmltv\.xml', 'xmltv', name='xmltv'),
     url(r'^$', 'home', name='home'),
 )
+
+# Logos are found here, served statically: /media/logo/channel/x.png
